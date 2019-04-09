@@ -1,6 +1,8 @@
 import React from "react";
 
-const Comics = () => {
+// @ts-ignore
+const Comics = ({ props }) => {
+    console.log({ props});
     return <div>123</div>;
 };
 
