@@ -1,15 +1,15 @@
 import React, {Component, Suspense} from 'react';
 import './App.css';
 import { getComicsList } from './Components/api';
+import Form from "./Components/form";
+
 
 const Comics = React.lazy(() => import('./Components/comics'));
-//import Image from "./Components/image/Image";
 
-//const Image = ({ path, extension}) => (<img src={`${path}.${extension}`} />);
 class App extends Component {
     state={
         comics: []
-    }
+    };
     async componentDidMount() {
 
         const comics = await getComicsList();
@@ -20,13 +20,13 @@ class App extends Component {
 
     render() {
         const { comics } = this.state;
+
         console.log('comic', comics);
 
-        // @ts-ignore
         return (
             <div className="App">
                 <header className="App-header">
-
+                    <Form />
                     <Suspense fallback={<div>Loading...</div>}>
                         {
                             comics.map(item => <Comics key={ item['id'] } { ...item } />)
