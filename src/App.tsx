@@ -17,7 +17,10 @@ class App extends Component {
         this.setState(state => ({...state, comics: comics.results}))
 
     }
-
+    private handleSubmit = (value:string) => {
+        console.log("value", value);
+    };
+    
     render() {
         const { comics } = this.state;
 
@@ -26,8 +29,9 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <Form />
+
                     <Suspense fallback={<div>Loading...</div>}>
+                        <Form onSubmit={this.handleSubmit}/>
                         {
                             comics.map(item => <Comics key={ item['id'] } { ...item } />)
                         }

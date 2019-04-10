@@ -8,17 +8,16 @@ export enum InputTypes {
 
 interface Props {
     type: InputTypes,
-    onChange: (e: SyntheticEvent) => void
-}
-interface State {
-    value: string
+    value: string,
+    onChange: (e: SyntheticEvent<HTMLInputElement>) => void
 }
 
-class Input extends React.Component<Props, State>{
+
+class Input extends React.PureComponent<Props>{
     render(){
-
+        const {value} = this.props;
         return <div className={style.comicsInputWrapper}>
-              <input type={ this.props.type } className={ style.comicsInput } onChange={this.props.onChange}/>
+              <input type={ this.props.type } value={value} className={ style.comicsInput } onChange={this.props.onChange}/>
         </div>
 
     }
