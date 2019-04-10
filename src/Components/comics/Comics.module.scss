@@ -1,4 +1,28 @@
-.comicsWrapper {
-  background-color: #61dafb;
-  color: red;
+.comics {
+  border-radius: 3px;
+  background-color: lightgray;
+  color: #333333;
+  width: 23%;
+  margin: 10px;
+  min-block-size: 555px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__img{
+    display: block;
+    width: 90%;
+    height: auto;
+    margin: 5px auto 10px;
+  }
+  h2{
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  p {
+    margin: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }

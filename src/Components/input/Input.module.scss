@@ -1,7 +1,20 @@
-.comicsInputWrapper{
-  background-color: lemonchiffon;
+.comicsInputWrapper {
+  height: 80px;
 }
 
 .comicsInput {
   color: #333;
+  padding: 10px;
+  font-size: 30px;
+  border: 10px solid rgba(255, 255, 255, .5);
+  box-shadow: (0 2 px 10 px rgba(0, 0, 0, .25) inset,
+    0 2 px 10 px rgba(0, 0, 0, .25));
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .5);
+  appearance: none;
+  outline: none;
+  color: #333;
+  width: 50%;
+  position: fixed;
+  left: 25%;
 }

@@ -7,7 +7,7 @@ const timestamp = new Date().getTime();
 const HASH = crypto.createHash('md5').update(timestamp + PRIVATE_KEY + PUBLIC_KEY).digest('hex');
 
 
-export const URL = `${BASE_URL}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${HASH}`;
+export const URL = `${BASE_URL}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${HASH}&offset=20`;
 
 
 

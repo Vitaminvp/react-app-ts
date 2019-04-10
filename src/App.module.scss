@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  background-color: lightslategrey;
+  &__comicsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
