@@ -13,38 +13,47 @@ class App extends Component {
     state={
         value: '',
         comics: [],
-        offset: 0,
+        limit: 40,
         total: 0
     };
     async componentDidMount() {
-
-        const comics: Data = await getComicsList();
+        const offset:number= -1;
+        const comics: Data = await getComicsList(offset);
         console.log({comics});
         this.setState(state => ({
             ...state,
             comics: comics.results,
             total: comics.total
-        }))
+        }));
 
     }
     private handleSubmit = (value:string) => {
         console.log("value", value);
     };
 
-    private handleInputChange = (value: string) => {
+     private handleInputChange = (value: string) => {
         this.setState(state => ({
             ...state, value
         }));
     };
-    private handleButtonClick = () => {
+    handleButtonClick = () => {
 
-        const {offset, total} = this.state;
-        const nextComicsList: number = total%offset > 0 ? offset+10 : 0;
+        const { limit, comics } = this.state;
 
-        console.log("value", this.state.offset);
+        console.log('nextComicsList', limit);
+        getComicsList(limit).then(newComics => {
+            console.log("newComics", newComics);
+            console.log("comics", comics);
+            this.setState({
+                comics: newComics.results,
+                limit: (20+limit)
+            });
+            console.log('this.state', this.state);
+        });
     };
+
     render() {
-        const { comics, value } = this.state;
+        const { comics, value, total, limit } = this.state;
 
 
         const filteredComics: Array<Result> = comics.filter(item => {
@@ -52,8 +61,6 @@ class App extends Component {
             // @ts-ignore
             return item['title'].match(regex);
         });
-
-        console.log('searchComics', filteredComics);
 
         return (
             <div className="App">
@@ -66,7 +73,7 @@ class App extends Component {
                                 filteredComics.map(item => <Comics key={ item['id'] } { ...item } />)
                             }
                         </div>
-                        <Button text={'Read more'} onButtonClick={this.handleButtonClick}/>
+                        <Button text={`Read more ${ total-limit > 0 ? `(left: ${total-limit})`:''}`} onButtonClick={this.handleButtonClick}/>
                     </Suspense>
 
                 </header>
