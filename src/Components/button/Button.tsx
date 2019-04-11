@@ -1,22 +1,18 @@
-import React, {PureComponent} from "react";
+import React, {ButtonHTMLAttributes} from "react";
 import style from "./Button.module.scss";
-import {Thumbnail} from "../types/apitypes";
+import classnames from "classnames"
 
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     onButtonClick: () => void;
-    text: string;
+    className?: string
 }
 
-class Button extends PureComponent<Props, {}>{
+export const Button: React.FunctionComponent<Props> = ({onButtonClick, children, className}) => {
 
+    return <div className={style.wrapper}>
+        <button className={classnames(style.readMore, className)} onClick={onButtonClick}>{children}</button>
+    </div>;
 
-    render(){
-        return <div className={style.wrapper}>
-            <button className={style.readMore} onClick={this.props.onButtonClick}>{this.props.text}</button>
-        </div>;
-
-    }
 };
 
-export default Button;

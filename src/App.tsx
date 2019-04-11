@@ -4,7 +4,7 @@ import { getComicsList } from './Components/api';
 import Form from "./Components/form";
 import style from "./App.module.scss";
 import {Data, Result} from "./Components/types/apitypes";
-import Button from "./Components/button";
+import {Button} from "./Components/button/Button";
 
 
 const Comics = React.lazy(() => import('./Components/comics'));
@@ -73,7 +73,7 @@ class App extends Component {
                                 filteredComics.map(item => <Comics key={ item['id'] } { ...item } />)
                             }
                         </div>
-                        <Button text={`Read more ${ total-limit > 0 ? `(left: ${total-limit})`:''}`} onButtonClick={this.handleButtonClick}/>
+                        <Button  onButtonClick={this.handleButtonClick}>{`Read more ${ total-limit > 0 ? `(left: ${total-limit})`:''}`}</Button>
                     </Suspense>
 
                 </header>

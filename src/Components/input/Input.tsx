@@ -17,7 +17,7 @@ class Input extends React.PureComponent<Props>{
     render(){
         const {value} = this.props;
         return <div className={style.comicsInputWrapper}>
-              <input type={ this.props.type } value={value} className={ style.comicsInput } onChange={this.props.onChange}/>
+              <input type={ this.props.type } value={value} placeholder={'filtering ...'} className={ style.comicsInput } onChange={this.props.onChange}/>
         </div>
 
     }
