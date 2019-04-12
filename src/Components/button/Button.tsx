@@ -1,4 +1,4 @@
-import React, {ButtonHTMLAttributes} from "react";
+import React, {ButtonHTMLAttributes, Suspense} from "react";
 import style from "./Button.module.scss";
 import classnames from "classnames"
 
@@ -11,7 +11,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: React.FunctionComponent<Props> = ({onButtonClick, children, className}) => {
 
     return <div className={style.wrapper}>
-        <button className={classnames(style.readMore, className)} onClick={onButtonClick}>{children}</button>
+        <Suspense fallback={<div>Loading...</div>}>
+            <button className={classnames(style.readMore, className)} onClick={onButtonClick}>{children}</button>
+        </Suspense>
     </div>;
 
 };

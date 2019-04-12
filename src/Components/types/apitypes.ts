@@ -61,9 +61,10 @@ export interface Series {
 export interface Result {
     id: string;
     name: string;
-    description: string;
+    description?: string;
     modified: string;
     resourceURI: string;
+    title: string;
     urls: Url[];
     thumbnail: Thumbnail;
     comics: Comics;

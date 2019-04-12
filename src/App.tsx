@@ -67,10 +67,13 @@ class App extends Component {
                 <header className="App-header">
 
                     <Form onSubmit={this.handleSubmit} onInputChange={this.handleInputChange} value={value}/>
-                    <Suspense fallback={<div>Loading...</div>}>
+                        <Suspense fallback={<div>Loading...</div>}>
                         <div className={style.App__comicsWrapper}>
                             {
-                                filteredComics.map(item => <Comics key={ item['id'] } { ...item } />)
+                                filteredComics.map(item => {
+                                    const {description, thumbnail, title, id} = item;
+                                    return <Comics key={ item['id'] } description={description} thumbnail={thumbnail} title={title} id={id}  />
+                                })
                             }
                         </div>
                         <Button  onButtonClick={this.handleButtonClick}>{`Read more ${ total-limit > 0 ? `(left: ${total-limit})`:''}`}</Button>
